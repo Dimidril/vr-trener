@@ -1,18 +1,19 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-public class SocketForConnection : MonoBehaviour
+namespace Core.JointElements
 {
-    [SerializeField] private ConnectionType _connectionType;
-    [SerializeField] private Rigidbody _rigidbody;
-
-    public ConnectionType ConnectionType => _connectionType;
-    public Rigidbody Rigidbody => _rigidbody;
-
-    private void OnValidate()
+    [RequireComponent(typeof(Rigidbody))]
+    public class SocketForConnection : MonoBehaviour
     {
-        _rigidbody = GetComponent<Rigidbody>();
+        [SerializeField] private ConnectionType _connectionType;
+        [SerializeField] private Rigidbody _rigidbody;
+
+        public ConnectionType ConnectionType => _connectionType;
+        public Rigidbody Rigidbody => _rigidbody;
+
+        private void OnValidate()
+        {
+            _rigidbody = GetComponent<Rigidbody>();
+        }
     }
 }

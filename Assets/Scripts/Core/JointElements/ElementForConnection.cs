@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Core.JointElements{ 
@@ -9,6 +7,7 @@ namespace Core.JointElements{
     {
         [SerializeField] private ConnectionType _connectionType;
         [SerializeField] private Rigidbody _rigidbody;
+        [SerializeField] private JointSettings _jointSettings;
 
         private FixedJoint _joint;
 
@@ -29,9 +28,32 @@ namespace Core.JointElements{
         {
             if(socket.ConnectionType == _connectionType && _joint == null)
             {
+                transform.rotation = socket.transform.rotation;
                 _joint = gameObject.AddComponent<FixedJoint>();
                 _joint.connectedBody = socket.Rigidbody;
+                SetJointSettings();
+            }
+        }
+
+        private void SetJointSettings()
+        {
+            if( _joint != null)
+            {
+                _joint.breakForce = _jointSettings.BreakForce;
+                _joint.breakTorque = _jointSettings.BreakTorque;
+                _joint.massScale = _jointSettings.MassScale;
+                _joint.connectedMassScale = _jointSettings.ConectedMassScale;
             }
         }
     }
+
+    [System.Serializable]
+    struct JointSettings
+    {
+        public float BreakForce;
+        public float BreakTorque;
+        public float MassScale;
+        public float ConectedMassScale;
+    }
 }
+
