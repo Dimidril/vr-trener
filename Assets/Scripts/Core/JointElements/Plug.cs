@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Core.JointElements{ 
 
     [RequireComponent(typeof(Rigidbody))]
-    public class ElementForConnection : MonoBehaviour
+    public class Plug : MonoBehaviour
     {
         [SerializeField] private ConnectionType _connectionType;
         [SerializeField] private Rigidbody _rigidbody;
@@ -20,11 +20,11 @@ namespace Core.JointElements{
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.TryGetComponent(out SocketForConnection socket))
+            if (other.gameObject.TryGetComponent(out Socket socket))
                 TryConnection(socket);
         }
 
-        private void TryConnection(SocketForConnection socket)
+        private void TryConnection(Socket socket)
         {
             if(socket.ConnectionType == _connectionType && _joint == null)
             {

@@ -3,7 +3,7 @@ using UnityEngine;
 namespace Core.JointElements
 {
     [RequireComponent(typeof(Rigidbody))]
-    public class SocketForConnection : MonoBehaviour
+    public class Socket : MonoBehaviour
     {
         [SerializeField] private ConnectionType _connectionType;
         [SerializeField] private Rigidbody _rigidbody;
