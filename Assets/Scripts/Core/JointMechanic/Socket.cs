@@ -23,7 +23,6 @@ namespace Core.JointMechanic
         {
             _connectedPlug = plug;
             Debug.Log($"Socket connection with {plug.name}");
-            OnConnected.Invoke();
         }
 
         public void BreakConnection()
