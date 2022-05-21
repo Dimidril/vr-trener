@@ -13,7 +13,7 @@ public class VrObjectsDontDestroyer : MonoBehaviour
         }
         else if (this != Instance)
         {
-            Destroy(this.gameObject);
+            Destroy(gameObject);
         }
     }
 }

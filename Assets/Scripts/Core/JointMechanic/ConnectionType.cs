@@ -1,4 +1,4 @@
-﻿namespace Core.JointElements
+﻿namespace Core.JointMechanic
 {
 
     public enum ConnectionType

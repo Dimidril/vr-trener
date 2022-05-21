@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/modules.xml
+/contentModel.xml
+/.idea.vr-trener.iml
+/projectSettingsUpdater.xml
+# Datasource local storage ignored files
+/../../../../../../:\SevSU\vr-trener\.idea\.idea.vr-trener\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/
