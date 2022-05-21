@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace Core.JointMechanic
@@ -29,7 +28,5 @@ namespace Core.JointMechanic
             _plug1.SetTube(this);
             _plug2.SetTube(this);
         }
-        
-        
     }
 }

@@ -64,7 +64,6 @@ namespace Core.JointMechanic{
             SetJointSettings();
             socket.SetConnection(this);
             _connectedSocket = socket;
-            _connectedSocket.SetConnection(this);
         }
 
         private void SetJointSettings()
