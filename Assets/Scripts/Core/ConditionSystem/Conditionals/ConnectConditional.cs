@@ -10,7 +10,11 @@ namespace Core.ConditionSystem.Conditionals
         
         public override bool IsDone()
         {
-            return Socket.IsConnection(_socket1, _socket2);
+            if (_socket1 != null && _socket2 != null) 
+                if(_socket1.ConnectionPlug && _socket2.ConnectionPlug)
+                    return _socket1.ConnectionPlug.Tube == _socket2.ConnectionPlug.Tube;
+            
+            return false;
         }
     }
 }

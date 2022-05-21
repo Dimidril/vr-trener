@@ -252,7 +252,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3718142488040735482, guid: 1950b2150beec924d9cff768bb4e815c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.425
       objectReference: {fileID: 0}
     - target: {fileID: 3718142488040735482, guid: 1950b2150beec924d9cff768bb4e815c, type: 3}
       propertyPath: m_LocalPosition.z
@@ -529,6 +529,10 @@ PrefabInstance:
     - target: {fileID: 7645188891544038308, guid: 9f7a13f221dcc7a45bbf1e2431ae80d3, type: 3}
       propertyPath: m_Name
       value: Indicators.SpatialTargets.Dispatcher
+      objectReference: {fileID: 0}
+    - target: {fileID: 7645188891544038308, guid: 9f7a13f221dcc7a45bbf1e2431ae80d3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7645188891544038310, guid: 9f7a13f221dcc7a45bbf1e2431ae80d3, type: 3}
       propertyPath: m_RootOrder
@@ -3599,7 +3603,7 @@ GameObject:
   - component: {fileID: 1872236745}
   - component: {fileID: 1872236744}
   m_Layer: 0
-  m_Name: VR objects (1)
+  m_Name: VR objects
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
