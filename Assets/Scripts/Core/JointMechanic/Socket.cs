@@ -21,7 +21,6 @@ namespace Core.JointMechanic
         public void SetConnection(Plug plug)
         {
             _connectedPlug = plug;
-            Debug.Log($"Socket connection with {plug.name}");
         }
 
         public void BreakConnection()
