@@ -8,13 +8,14 @@ namespace Core.ConditionSystem.Conditionals
         [SerializeField] private Socket _socket1;
         [SerializeField] private Socket _socket2;
         
-        public override bool IsDone()
+        protected override bool IsDoneCheck()
         {
-            if (_socket1 != null && _socket2 != null) 
+            if (_socket1 && _socket2) 
                 if(_socket1.ConnectionPlug && _socket2.ConnectionPlug)
                     return _socket1.ConnectionPlug.Tube == _socket2.ConnectionPlug.Tube;
             
             return false;
         }
+        
     }
 }

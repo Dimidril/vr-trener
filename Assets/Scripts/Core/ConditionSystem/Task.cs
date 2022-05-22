@@ -10,7 +10,7 @@ namespace Core.ConditionSystem
         {
             foreach (var conditional in _conditionals)
             {
-                if (!conditional.IsDone())
+                if (!conditional.IsDone)
                     return false;
             }
             return true;

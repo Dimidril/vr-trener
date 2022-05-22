@@ -6,8 +6,10 @@ namespace Core.ConditionSystem
 {
     public abstract class Conditional: MonoBehaviour
     {
+        public bool IsDone => IsDoneCheck(); 
+        
         public UnityEvent OnConditionalDone;
 
-        public abstract bool IsDone();
+        protected abstract bool IsDoneCheck();
     }
 }
