@@ -1,32 +1,17 @@
+﻿using System;
 using UnityEngine;
 
 namespace Core.JointMechanic
 {
     public class Tube : MonoBehaviour
     {
-        [SerializeField] private Plug _plug1;
-        [SerializeField] private Plug _plug2;
+        [SerializeField] private Connector _connectorA;
+        [SerializeField] private Connector _connectorB;
 
         private void Awake()
         {
-            InitPlugs();
-        }
-
-        public Plug GetSecondPlug(Plug plug)
-        {
-            if (plug == _plug1)
-                return _plug2;
-            
-            if (plug == _plug2)
-                return _plug1;
-            
-            return null;
-        }
-        
-        private void InitPlugs()
-        {
-            _plug1.SetTube(this);
-            _plug2.SetTube(this);
+            _connectorA.SetTube(this);
+            _connectorB.SetTube(this);
         }
     }
 }

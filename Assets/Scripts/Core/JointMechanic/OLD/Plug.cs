@@ -1,29 +1,30 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Core.JointMechanic{ 
 
     [RequireComponent(typeof(Rigidbody))]
     public class Plug : MonoBehaviour
     {
-        [SerializeField] private ConnectionType _connectionType;
+        [FormerlySerializedAs("_connectionType")] [SerializeField] private ConnectorType _connectorType;
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private JointSettings _jointSettings;
 
         private FixedJoint _joint;
         private Socket _connectedSocket;
-        private Tube _tube; 
+        private TubeOld _tubeOld; 
 
         public Rigidbody Rigidbody => _rigidbody;
 
         public Socket ConnectedSocket => _connectedSocket;
-        public Tube Tube => _tube;
+        public TubeOld TubeOld => _tubeOld;
 
         private void OnValidate()
         {
             _rigidbody = GetComponent<Rigidbody>();
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTrigOngerEnter(Collider other)
         {
             if (other.gameObject.TryGetComponent(out Socket socket))
                 TryConnection(socket);
@@ -34,14 +35,14 @@ namespace Core.JointMechanic{
             BreakConnection();
         }
 
-        public void SetTube(Tube tube)
+        public void SetTube(TubeOld tubeOld)
         {
-            _tube = tube;
+            _tubeOld = tubeOld;
         }
 
         public Plug GetSecondEnd()
         {
-            return _tube.GetSecondPlug(this);
+            return _tubeOld.GetSecondPlug(this);
         }
 
         private void BreakConnection()
@@ -53,7 +54,7 @@ namespace Core.JointMechanic{
 
         private void TryConnection(Socket socket)
         {
-            if(socket.ConnectionType == _connectionType && _joint == null)
+            if(socket.ConnectorType == _connectorType && _joint == null)
                 SetConnection(socket);
         }
 
@@ -76,14 +77,5 @@ namespace Core.JointMechanic{
                 _joint.connectedMassScale = _jointSettings.ConnectedMassScale;
             }
         }
-    }
-
-    [System.Serializable]
-    internal struct JointSettings
-    {
-        public float BreakForce;
-        public float BreakTorque;
-        public float MassScale;
-        public float ConnectedMassScale;
     }
 }

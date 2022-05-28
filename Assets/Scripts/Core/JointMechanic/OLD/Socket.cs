@@ -1,16 +1,17 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Core.JointMechanic
 {
     [RequireComponent(typeof(Rigidbody))]
     public class Socket : MonoBehaviour
     {
-        [SerializeField] private ConnectionType _connectionType;
+        [FormerlySerializedAs("_connectionType")] [SerializeField] private ConnectorType _connectorType;
         [SerializeField] private Rigidbody _rigidbody;
 
         private Plug _connectedPlug;
 
-        public ConnectionType ConnectionType => _connectionType;
+        public ConnectorType ConnectorType => _connectorType;
         public Rigidbody Rigidbody => _rigidbody;
         public Plug ConnectionPlug => _connectedPlug;
 

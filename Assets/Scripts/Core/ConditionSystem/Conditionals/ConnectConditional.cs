@@ -1,21 +1,27 @@
-﻿using Core.JointMechanic;
+﻿using System;
+using Core.JointMechanic;
 using UnityEngine;
 
 namespace Core.ConditionSystem.Conditionals
 {
     public class ConnectConditional: Conditional
     {
-        [SerializeField] private Socket _socket1;
-        [SerializeField] private Socket _socket2;
+        [SerializeField] private Connector _socket1;
+        [SerializeField] private Connector _socket2;
         
-        protected override bool IsDoneCheck()
+        private new void Awake()
         {
-            if (_socket1 && _socket2) 
-                if(_socket1.ConnectionPlug && _socket2.ConnectionPlug)
-                    return _socket1.ConnectionPlug.Tube == _socket2.ConnectionPlug.Tube;
-            
-            return false;
+            base.Awake();
+            _socket1.OnConnection.AddListener(OnConnected);
+            _socket2.OnConnection.AddListener(OnConnected);
         }
-        
+
+        private void OnConnected()
+        {
+            if(ConnectedRequests.IsSocketsConnection(_socket1, _socket2))
+            {
+                OnConditionalDone.Invoke(true);
+            }
+        }
     }
 }
