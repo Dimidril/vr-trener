@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Access" MembersFormat="FullSignature">
+  <Class Name="UI.HintScreen">
+    <Position X="11" Y="7.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAgAACAAACAAAAAAAAAAAAAAAAAAAAAIgAAAAAAACEA=</HashCode>
+      <FileName>Assets\Scripts\UI\HintScreen.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_task" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="UI.DoneButton">
+    <Position X="10" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAhAAAAAQAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\UI\DoneButton.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_task" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Core.JointMechanic.ConnectedRequests">
+    <Position X="10.5" Y="10.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Core\JointMechanic\ConnectedRequests.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core.JointMechanic.Connector">
+    <Position X="4" Y="9.75" Width="3.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAACAAAAAkRAAEEAAQAAAECAAAEJQQABACAACAA=</HashCode>
+      <FileName>Assets\Scripts\Core\JointMechanic\Connector.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_jointSettings" />
+      <Field Name="_type" />
+      <Property Name="ConnectedConnector" />
+      <Property Name="ConnectedTube" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Core.JointMechanic.Tube">
+    <Position X="5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Core\JointMechanic\Tube.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_connectorA" />
+      <Field Name="_connectorB" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Core.ConditionSystem.Task">
+    <Position X="9.5" Y="3.75" Width="3.75" />
+    <TypeIdentifier>
+      <HashCode>gAAAAIAAAEAAAAIAAAAAAAAAEABAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Core\ConditionSystem\Task.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Field Name="_conditionals" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="Core.ConditionSystem.Conditional">
+    <Position X="6" Y="3.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>CAAAACAAAAAAAAAAAAAAQAAAAAAAAgAAAIAAAAAAAEA=</HashCode>
+      <FileName>Assets\Scripts\Core\ConditionSystem\Conditional.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_hint" />
+    </ShowAsAssociation>
+  </Class>
+  <Class Name="Core.ConditionSystem.Conditionals.ActionConditional">
+    <Position X="7.25" Y="7" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEg=</HashCode>
+      <FileName>Assets\Scripts\Core\ConditionSystem\Conditionals\ActionConditional.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Core.ConditionSystem.Conditionals.ConnectConditional">
+    <Position X="4.75" Y="7" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAADAEA=</HashCode>
+      <FileName>Assets\Scripts\Core\ConditionSystem\Conditionals\ConnectConditional.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Field Name="_socket1" />
+      <Field Name="_socket2" />
+    </ShowAsAssociation>
+  </Class>
+  <Struct Name="Core.JointMechanic.JointSettings">
+    <Position X="0.5" Y="10.5" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAgAAAAABAAAAAAAAAAiAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Core\JointMechanic\Connector.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Struct Name="Core.ConditionSystem.Hint">
+    <Position X="3.75" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Core\ConditionSystem\Hint.cs</FileName>
+    </TypeIdentifier>
+  </Struct>
+  <Enum Name="Core.JointMechanic.ConnectorType" Collapsed="true">
+    <Position X="2" Y="8" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAgAAAAAAAAA=</HashCode>
+      <FileName>Assets\Scripts\Core\JointMechanic\ConnectorType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

@@ -1,5 +1,4 @@
-﻿using System;
-using Core.JointMechanic;
+﻿using Core.JointMechanic;
 using UnityEngine;
 
 namespace Core.ConditionSystem.Conditionals

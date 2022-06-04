@@ -35,6 +35,7 @@ namespace Core.JointMechanic
         
         private void OnJointBreak(float breakForce)
         {
+            Debug.Log("Break");
             BreakConnection();
         }
 
@@ -80,7 +81,6 @@ namespace Core.JointMechanic
         private void BreakConnection()
         {
             _joint = null;
-            ConnectedConnector.SetLogicConnection(null);
             SetLogicConnection(null);
             OnDisconnection?.Invoke();
         }

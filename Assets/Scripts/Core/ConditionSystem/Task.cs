@@ -1,6 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using Core.JointMechanic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Core.ConditionSystem
 {
@@ -10,6 +11,8 @@ namespace Core.ConditionSystem
         
         private Queue<Conditional> _conditionalsQueue;
         private Conditional _currentConditional;
+
+        public event UnityAction<Conditional> onOnConditionalChange;
 
         private void Awake()
         {
@@ -23,19 +26,32 @@ namespace Core.ConditionSystem
 
             _currentConditional = _conditionalsQueue.Dequeue();
             _currentConditional.OnConditionalDone.AddListener(OnCurrentConditionalDone);
+            onOnConditionalChange?.Invoke(_currentConditional);
         }
 
         private void OnCurrentConditionalDone(bool result)
         {
+            Debug.Log($"{_currentConditional} - DONE {result}");
             _currentConditional.OnConditionalDone.RemoveAllListeners();
-            _currentConditional = _conditionalsQueue.Dequeue();
-            _currentConditional.OnConditionalDone.AddListener(OnCurrentConditionalDone);
+
+            if (_conditionalsQueue.Peek())
+            {
+                _currentConditional = _conditionalsQueue.Dequeue();
+                _currentConditional.OnConditionalDone.AddListener(OnCurrentConditionalDone);
+            }
+            else
+            {
+                _currentConditional = null;
+            }
+            
+            onOnConditionalChange?.Invoke(_currentConditional);
         }
 
         public bool IsTaskComplete()
         {
             foreach (var conditional in _conditionals)
             {
+                Debug.Log(conditional.IsDone);
                 if (!conditional.IsDone)
                     return false;
             }
