@@ -5,6 +5,9 @@ using UnityEngine.Events;
 
 namespace Core.ConditionSystem
 {
+    /// <summary>
+    /// Класс отвечает за выполнение поставленой задачи, отслеживая выполение всех условий
+    /// </summary>
     public class Task : MonoBehaviour
     {
         [SerializeField] private Conditional[] _conditionals;
@@ -29,14 +32,17 @@ namespace Core.ConditionSystem
             onOnConditionalChange?.Invoke(_currentConditional);
         }
 
+        /// <summary>
+        /// Вызываеться когда очередое условие выполнено 
+        /// </summary>
+        /// <param name="result">Результат выполнения условия</param>
         private void OnCurrentConditionalDone(bool result)
         {
             Debug.Log($"{_currentConditional} - DONE {result}");
             _currentConditional.OnConditionalDone.RemoveAllListeners();
 
-            if (_conditionalsQueue.Peek())
+            if (_conditionalsQueue.TryDequeue(out _currentConditional))
             {
-                _currentConditional = _conditionalsQueue.Dequeue();
                 _currentConditional.OnConditionalDone.AddListener(OnCurrentConditionalDone);
             }
             else
@@ -47,6 +53,10 @@ namespace Core.ConditionSystem
             onOnConditionalChange?.Invoke(_currentConditional);
         }
 
+        /// <summary>
+        /// Проверка на то, выполнена ли задача
+        /// </summary>
+        /// <returns></returns>
         public bool IsTaskComplete()
         {
             foreach (var conditional in _conditionals)

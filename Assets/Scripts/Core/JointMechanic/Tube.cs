@@ -2,6 +2,10 @@
 
 namespace Core.JointMechanic
 {
+    /// <summary>
+    /// Шланг. Прослойка между двумя Connector
+    /// (Объединяющее звено)
+    /// </summary>
     public class Tube : MonoBehaviour
     {
         [SerializeField] private Connector _connectorA;

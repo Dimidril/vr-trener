@@ -1,16 +1,21 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.Events;
 
 namespace Core.JointMechanic
 {
+    /// <summary>
+    /// Класс для отслеживания и реализации физического и логического присоединения элементов
+    /// </summary>
     public class Connector : MonoBehaviour
     {
         [SerializeField] private ConnectorType _type;
         [SerializeField] private JointSettings _jointSettings;
         [SerializeField] private Rigidbody _rigidbody;
+        [SerializeField] private Collider _collider;
         
         private FixedJoint _joint;
-        
+
         public Connector ConnectedConnector { get; private set; }
         public Tube ConnectedTube { get; private set; }
         public ConnectorType Type => _type;
@@ -22,6 +27,12 @@ namespace Core.JointMechanic
         private void OnValidate()
         {
             _rigidbody = GetComponent<Rigidbody>();
+            _collider = GetComponent<Collider>();
+        }
+
+        private void Awake()
+        {
+            //_collider.isTrigger = true;
         }
 
         private void OnTriggerEnter(Collider other)
@@ -33,40 +44,67 @@ namespace Core.JointMechanic
             }
         }
         
+        /// <summary>
+        /// Вызываеться когда соединение обрываеться физически
+        /// Разрывает соединение и логически
+        /// </summary>
+        /// <param name="breakForce">Сила разрыва</param>
         private void OnJointBreak(float breakForce)
         {
             Debug.Log("Break");
+            _collider.enabled = true;
             BreakConnection();
         }
 
+        /// <summary>
+        /// Инициализация Шланга
+        /// </summary>
+        /// <param name="tube"></param>
         public void SetTube(Tube tube)
         {
             ConnectedTube = tube;
         }
         
+        /// <summary>
+        /// Производит лоическое соединение
+        /// </summary>
+        /// <param name="connector">К чему присоединять</param>
         public void SetLogicConnection(Connector connector)
         {
             ConnectedConnector = connector;
             OnConnection?.Invoke();
         }
         
+        /// <summary>
+        /// Попытка соединения
+        /// </summary>
+        /// <param name="connector"></param>
         private void TryConnectionWith(Connector connector)
         {
             if (connector.Type == ConnectorType.Socket)
             {
+                _collider.enabled = false;
                 SetJointConnectionWith(connector);
                 SetLogicConnection(connector);
                 connector.SetLogicConnection(this);
             }
         }
 
+        /// <summary>
+        /// Создание физического соединения
+        /// </summary>
+        /// <param name="connector"></param>
         private void SetJointConnectionWith(Connector connector)
         {
+            
             _joint = gameObject.AddComponent<FixedJoint>();
             _joint.connectedBody = connector.Rigidbody;
             SetJointSettings();
         }
 
+        /// <summary>
+        /// Задаёт параметры физического соединения
+        /// </summary>
         private void SetJointSettings()
         {
             if( _joint != null)
@@ -78,6 +116,9 @@ namespace Core.JointMechanic
             }
         }
         
+        /// <summary>
+        /// Разрывает логическое соединения
+        /// </summary>
         private void BreakConnection()
         {
             _joint = null;

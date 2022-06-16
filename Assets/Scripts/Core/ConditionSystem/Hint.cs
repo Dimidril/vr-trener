@@ -2,6 +2,9 @@
 
 namespace Core.ConditionSystem
 {
+    /// <summary>
+    /// Структура подсказки
+    /// </summary>
     [System.Serializable]
     public struct Hint
     {

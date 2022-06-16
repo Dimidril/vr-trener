@@ -3,7 +3,10 @@ using UnityEngine;
 
 namespace Core.ConditionSystem.Conditionals
 {
-    public class ConnectConditional : Conditional
+    /// <summary>
+    /// Условие соединения двух Connector по Tube
+    /// </summary>
+    public class ConnectTubeConditional: Conditional
     {
         [SerializeField] private Connector _socket1;
         [SerializeField] private Connector _socket2;
@@ -16,12 +19,12 @@ namespace Core.ConditionSystem.Conditionals
         }
 
         /// <summary>
-        /// Вызываеться когда один из Connector был присоединён
+        /// Вызываеться когда один из концов Tube был присоединён
         /// Проверка на соединение двух коннекторов и вызов соответствующего события
         /// </summary>
         private void OnConnected()
         {
-            if(ConnectedRequests.IsConnection(_socket1, _socket2))
+            if(ConnectedRequests.IsSocketsConnectionWithTube(_socket1, _socket2))
             {
                 OnConditionalDone.Invoke(true);
             }
