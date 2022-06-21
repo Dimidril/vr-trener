@@ -1,4 +1,5 @@
 ﻿using System;
+using Tilia.Interactions.Interactables.Interactables;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -9,8 +10,10 @@ namespace Core.JointMechanic
     /// </summary>
     public class Connector : MonoBehaviour
     {
+        [SerializeField] private InteractableFacade _interactable;
         [SerializeField] private ConnectorType _type;
         [SerializeField] private JointSettings _jointSettings;
+        [SerializeField] private Transform _targetTransform;
         [SerializeField] private Rigidbody _rigidbody;
         [SerializeField] private Collider _collider;
         
@@ -84,9 +87,18 @@ namespace Core.JointMechanic
             if (connector.Type == ConnectorType.Socket)
             {
                 _collider.enabled = false;
+                //SetTransform(); 
                 SetJointConnectionWith(connector);
                 SetLogicConnection(connector);
                 connector.SetLogicConnection(this);
+            }
+        }
+
+        private void SetTransform()
+        {
+            if (_targetTransform)
+            {
+                transform.SetPositionAndRotation(_targetTransform.position, _targetTransform.rotation);
             }
         }
 

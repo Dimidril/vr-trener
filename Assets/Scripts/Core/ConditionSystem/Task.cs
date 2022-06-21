@@ -10,12 +10,13 @@ namespace Core.ConditionSystem
     /// </summary>
     public class Task : MonoBehaviour
     {
-        [SerializeField] private Conditional[] _conditionals;
+        [SerializeField] public Conditional[] _conditionals;
+        [SerializeField] private Hint _endTaskHint;
         
         private Queue<Conditional> _conditionalsQueue;
         private Conditional _currentConditional;
 
-        public event UnityAction<Conditional> onOnConditionalChange;
+        public event UnityAction<Hint> onOnConditionalChange;
 
         private void Awake()
         {
@@ -29,7 +30,7 @@ namespace Core.ConditionSystem
 
             _currentConditional = _conditionalsQueue.Dequeue();
             _currentConditional.OnConditionalDone.AddListener(OnCurrentConditionalDone);
-            onOnConditionalChange?.Invoke(_currentConditional);
+            onOnConditionalChange?.Invoke(_currentConditional.Hint);
         }
 
         /// <summary>
@@ -44,13 +45,13 @@ namespace Core.ConditionSystem
             if (_conditionalsQueue.TryDequeue(out _currentConditional))
             {
                 _currentConditional.OnConditionalDone.AddListener(OnCurrentConditionalDone);
+                onOnConditionalChange?.Invoke(_currentConditional.Hint);
             }
             else
             {
                 _currentConditional = null;
+                onOnConditionalChange?.Invoke(_endTaskHint);
             }
-            
-            onOnConditionalChange?.Invoke(_currentConditional);
         }
 
         /// <summary>
@@ -67,5 +68,9 @@ namespace Core.ConditionSystem
             }
             return true;
         }
+    }
+
+    public class UnityEventWithResult : UnityEvent<List<Conditional>>
+    {
     }
 }

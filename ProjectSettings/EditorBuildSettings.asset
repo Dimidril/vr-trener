@@ -6,14 +6,14 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/TestWithoutVr.unity
-    guid: c88ca61d27765b34ea6fca99f09e2846
-  - enabled: 1
     path: Assets/Scenes/StartScene.unity
     guid: 264523c697b0fd84f990c24b1c53b005
-  - enabled: 0
-    path: Assets/Scenes/Test.unity
-    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Classes/EduVRClass.unity
+    guid: 04c574d11e2381f428f425b2fa5c03bf
+  - enabled: 1
+    path: Assets/Scenes/Classes/EkzVRClass.unity
+    guid: 57b96d1b5a4e1634db559b36e66426de
   m_configObjects:
     Unity.XR.OpenVR.Settings: {fileID: 11400000, guid: 3541cb5bd4a5e2e418952d57131abbcd, type: 2}
     com.unity.input.settings: {fileID: 11400000, guid: 800f7226d1299434e9f4c95341185e58, type: 2}

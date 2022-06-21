@@ -41,11 +41,11 @@ namespace UI
         /// <summary>
         /// Смена подсказки
         /// </summary>
-        /// <param name="conditional">Новая подсказка</param>
-        private void ChangeHint(Conditional conditional)
+        /// <param name="hint">Новая подсказка</param>
+        private void ChangeHint(Hint hint)
         {
-            _titleContainer.text = conditional.HintTitle;
-            _textContainer.text = conditional.HintText;
+            _titleContainer.text = hint.Title;
+            _textContainer.text = hint.Text;
         }
 
         /// <summary>

@@ -11,6 +11,7 @@ namespace Core.ConditionSystem
     {
         [SerializeField] private Hint _hint;
 
+        public Hint Hint => _hint;
 
         public string HintTitle => _hint.Title;
         public string HintText => _hint.Text;
